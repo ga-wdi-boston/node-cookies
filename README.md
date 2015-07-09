@@ -156,6 +156,19 @@ We can tell the Cookie to expire at some point in the future. This is done by ad
 ```
 **Above code is in ``app2_done.js``**
 
+## Cookie Options
+
+#### Domain
+
+#### Path
+
+#### Secure
+
+### HttpOnly
+
+Does not permit Javascript to access the cookie via ``document.cookie`` property.
+
+
 ## Encrypted Session.
 
 You will want to encrypt the contents of your session. This is a security measure. 
