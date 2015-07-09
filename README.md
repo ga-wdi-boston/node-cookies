@@ -74,6 +74,8 @@ server.listen(4000, function() {
 
 ```
 
+**Above code is in ``app1_done.js``**
+
 ### Lab. 
 
 * Use the Chrome inspector to delete the cookies, if any. Use the Resources tab.
@@ -107,6 +109,8 @@ A Session is, usually, just a Cookie that has a name ``session`` and a set of na
 
 Now the session is a plain old string. But it's using a common format to set a number name/value pairs.
 
+**Above code is in ``app2_done.js``**
+
 ## Lab 
 * Write a function that will build a session object literal from the value of Cookie header in the HTTP Request.
 
@@ -126,6 +130,31 @@ This would become the ``currently logged in user``
 
 ## Lab
 * Write a function that will return the currently "logged in" user. *This would be a specific user in the DB*
+
+
+## Expire Cookies
+
+We can tell the Cookie to expire at some point in the future. This is done by adding a ``expire`` name/value pair to the cookie.
+
+``Set-Cookie:session=email=joe@example.com&username=joe&user_id=33; expires=Mon, 13 Jul 2015 18:18:23 GMT``
+
+**Update the app.js**
+
+```
+...
+  content = "<html><head></head><body>",
+  expireDateStr,
+ sessionString;
+...
+ expireDateStr = new Date(Date.now() + 345600000).toUTCString();
+ sessionString = 'session=email=joe@example.com&username=joe&user_id=33';
+ sessionString += "; expires=";
+ sessionString += expireDateStr;
+ // Set the Cookie in the HTTP Response Header
+ response.writeHead(200, {'Set-Cookie': sessionString});
+...
+```
+**Above code is in ``app2_done.js``**
 
 ## Encrypted Session.
 
